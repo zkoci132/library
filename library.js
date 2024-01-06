@@ -17,6 +17,20 @@ function Book(title,author,pages,read){
 }
 
 
+Book.prototype.changeRead = function(){
+    console.log(this.read)
+    if(this.read === true){
+        this.read = false;
+    }
+    else{
+        this.read = true;
+    }
+    console.log(this.read)
+
+    return this;
+}
+
+
 function Remove(){
 
 }
@@ -32,7 +46,6 @@ function buildButtons(){
     const submission = document.querySelector('.inputButton');
     const dialog = document.querySelector('dialog');
     const show = document.querySelector('.showModal');
-    const closeButton = document.querySelector('dialog button');
     
     
     submission.addEventListener('click',()=>{
@@ -54,96 +67,161 @@ function buildButtons(){
     show.addEventListener('click', () => {
         dialog.showModal();
       });
-      /*
-    closeButton.addEventListener('click',()=>{
-        dialog.close();
-    })
-    */
+}
+
+function styleHolders(holder,head,cont,text,hc,newBook){
+
+    cont.style.display = 'flex';
+    cont.style.flexDirection = 'column';
+    cont.style.fontFamily = "Gothic";
+    head.style.fontFamily = "Gothic";
+    head.style.padding = '5px';
+    head.style.borderBottom = '2px solid white'
+
+    
+    head.style.display = 'flex';
+
+    cont.style.width = '100%'
+
+    cont.style.justifyContent = 'center'
+    cont.style.alignItems= 'center'
+
+    holder.style.gap = '5px';
+    
+
+    
+
+    if(hc === "Have you read?..."){
+       
+        let check = document.createElement('input');
+        check.type = 'checkbox';
+        if(newBook.read === true){
+            check.checked = true
+        }
+        else{
+            check.checked = false;
+        }
+        check.addEventListener('click',()=>{
+            newBook.changeRead();
+        })
+        cont.appendChild(check);
+        head.appendChild(document.createTextNode(hc));
+    }
+    else{
+        cont.appendChild(document.createTextNode(text));
+        head.appendChild(document.createTextNode(hc));
+
+    }
+
+    holder.appendChild(head);
+    holder.appendChild(cont);
+
+    holder.style.display = 'flex';
+    holder.style.flexDirection = 'column';
+
+    holder.style.width = '100%'
+
+    return holder;
 }
 
 
-function showOutput(newBook){
-    
-    let newTile = document.createElement('div');
-     
-    
-    
-   
-   
+function makeRemoveButton(idStr){
+    bttn = document.createElement('button');
+    bttn.setAttribute('type','button');
+    bttn.textContent = 'Remove'
     
     
-    let newTitle = document.createTextNode(newBook.title);
-    let newPages = document.createTextNode(newBook.pages);
-    let newAuthor = document.createTextNode(newBook.author);
-    let newRead = document.createTextNode(newBook.read);
+    bttn.style.padding = '5px'
+    bttn.style.backgroundColor = 'white';
+    bttn.style.color = 'black';
+    bttn.style.borderRadius = '50%';
+    bttn.style.height = '40px';
+    bttn.style.width = '80px';
+    bttn.style.fontFamily = 'skyrim';
+    bttn.style.fontWeight = 'bold';
     
-    newTile.style.display = 'flex';    
-    newTile.style.border = '3px solid black';
-    newTile.classList.add('bookTiles')
-    newTile.style.flex = '0 0 auto';
-    newTile.style.height = '225px';
-    newTile.style.width = '225px';
 
-    newTile.id = newBook.id
+    bttn.addEventListener('click',function(){
     
-    let idStr = newBook.id;
-
-    const removeButton = document.createElement('button');
-    removeButton.setAttribute('type','button');
-    removeButton.textContent = 'Remove'
-    removeButton.addEventListener('click',function(){
-        let found = false;
-        let i = 0;
-        let currElt = document.getElementById(idStr);
         if(document.getElementById(idStr) !== null){
             display.removeChild(document.getElementById(idStr));
             console.log(myLibrary);
             myLibrary = myLibrary.filter(Book => Book.id !== idStr)
             console.log(myLibrary);
-        }
-        
-     
-        
+        }   
     })
 
+    return bttn;
 
-        /*
-        for(let i = 0;i < display.childNodes.length;i++){
-            if(idStr == i){
-                const index = myLibrary.indexOf(idStr);
-                
-                console.log(myLibrary); 
-                if (index > -1) { // only splice array when item is found
-                    myLibrary.splice(index, 1); // 2nd parameter means remove one item only
-                }
-                console.log(myLibrary); 
-                
-                
-                
-                display.removeChild(document.getElementById(idStr))
-                //let str = toString(i);
-                
-            }
-        }
-    })
-    */
+}
 
+function showOutput(newBook){
+    
+    let newTile = document.createElement('div');
+    
+    
+    let titleHolder = document.createElement('div');
+    let pagesHolder = document.createElement('div');
+    let authorHolder = document.createElement('div');
+    let readHolder = document.createElement('div');
+    
+    let titleHeader = document.createElement('div');
+    let titleContent = document.createElement('div');
 
-    
-    
-    //let doomed = getElementById(myLibrary[newTile.id].id);
-   // display.removeChild(doomed);
-    //display.removeChild(textNode(newTile.id)
-    
-    
-    newTile.appendChild(newTitle);
-    newTile.appendChild(newAuthor);
-    newTile.appendChild(newPages);
-    newTile.appendChild(newRead);
+    let pagesHeader = document.createElement('div');
+    let pagesContent = document.createElement('div');
+
+    let authorHeader = document.createElement('div');
+    let authorContent = document.createElement('div');
+
+    let readHeader = document.createElement('div');
+    let readContent = document.createElement('div');
+
+    styleHolders(titleHolder,titleHeader,titleContent,newBook.title,"Title...",newBook);
+    styleHolders(pagesHolder,pagesHeader,pagesContent,newBook.pages,"Pages...",newBook);
+    styleHolders(authorHolder,authorHeader,authorContent,newBook.author,"Author...",newBook);
+    styleHolders(readHolder,readHeader,readContent,newBook.read,"Have you read?...",newBook);
 
     
     
-    newTile.appendChild(removeButton);
+    newTile.style.display = 'flex';    
+    newTile.style.border = '3px solid black';
+    newTile.classList.add('bookTiles')
+    newTile.style.flex = '0 0 auto';
+    newTile.style.height = '250px';
+    newTile.style.width = '250px';
+    newTile.style.backgroundColor = 'black';
+    newTile.style.color = 'white';
+    newTile.style.fontFamily = 'skyrim'
+    newTile.style.flexDirection = 'column'
+    newTile.style.border = '3px ridge white'
+
+    newTile.id = newBook.id
+
+
+    
+    let idStr = newBook.id;
+
+    const removeButton = makeRemoveButton(idStr);
+
+    const buttonHolder = document.createElement('div');
+    buttonHolder.style.display = 'flex';
+    buttonHolder.style.flexDirection = 'column';
+    buttonHolder.style.justifyContent = 'center';
+    buttonHolder.style.alignItems = 'center';
+ 
+    buttonHolder.style.padding = '10px';
+
+    buttonHolder.appendChild(removeButton);
+    
+
+    newTile.appendChild(titleHolder);
+    newTile.appendChild(authorHolder);
+    newTile.appendChild(pagesHolder);
+    newTile.appendChild(readHolder);
+
+    
+    newTile.appendChild(buttonHolder);
 
     
     display.appendChild(newTile);
