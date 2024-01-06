@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="library.js" defer></script>
+    <title>Library</title>
+</head>
+<body>
+    <div class="grid-container">
+        <div class="header">
+            Hello
+        </div>
+        
+        
+        <div class="content">
+            <div class="showOutput">
+            
+    
+            </div>
+        </div>
+        
+    
+        <div class="footer">
+            <button type="button" class="showModal">
+                Add Book
+            </button>
+           
+    
+        </div>
+    </div>
+    
+    <dialog>
+        <form method="dialog">
+            <div class="collectInput">
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="book_title"/>
+
+                <label for="author">Author:</label>
+                <input type="text" id="author" name="author_name"/>
+
+                <label for="pages">Pages:</label>
+                <input type="number" id="pages" name="page_count"/>
+
+                <label for="read">Read:</label>
+                <input type="checkbox" id="read" name="book_read"/>
+
+                <button type="submit" class="inputButton">
+                    Submit
+                </button>
+            </div>
+        <form>
+        <button class="closeButton">Close</button>
+        <p>This modal dialog has a groovy backdrop!</p>
+        
+    </dialog>
+    
+</body>
+</html>
