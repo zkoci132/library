@@ -29,11 +29,9 @@ body,html{
 
 .header{
     background-color: black;
-    display: grid;
-    grid-template-columns: 1fr 3fr 1fr;
+    display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
     grid-area: 1 / 1 / 2 / 2;
     box-shadow: 2px 2px 2px 2px;
 }
@@ -133,12 +131,4 @@ dialog {
     
   }
 
-
-.design{
-    color: white;
-    
-    filter: invert(100%);
-    -webkit-filter: invert(100%);
-      
-}
   
