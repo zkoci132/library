@@ -11,7 +11,10 @@
 <body>
     <div class="grid-container">
         <div class="header">
-            Hello
+            <p class="headerText">
+                Welcome to Zach's Library.
+            </p>
+            
         </div>
         
         
@@ -35,26 +38,37 @@
     <dialog>
         <form method="dialog">
             <div class="collectInput">
-                <label for="title">Title:</label>
-                <input type="text" id="title" name="book_title"/>
 
-                <label for="author">Author:</label>
-                <input type="text" id="author" name="author_name"/>
+                <div class="titleAndAuthor">
+                    <label for="title">Title:</label>
+                    <input type="text" id="title" name="book_title"/>
 
-                <label for="pages">Pages:</label>
-                <input type="number" id="pages" name="page_count"/>
+                    <label for="author">Author:</label>
+                    <input type="text" id="author" name="author_name"/>
+                </div>
 
-                <label for="read">Read:</label>
-                <input type="checkbox" id="read" name="book_read"/>
+                <div class="pagesAndRead">
+                    <label for="pages">Pages:</label>
+                    <input type="number" id="pages" name="page_count"/>
+                    <div class="formatRead">
+                        <label for="read">Have you read this?</label>
+                        <input type="checkbox" id="read" name="book_read"/>
+                    </div>
+                    
 
-                <button type="submit" class="inputButton">
-                    Submit
-                </button>
+                </div>
+                
+
+                <div class="modalButtons">
+                    <button type="submit" class="inputButton">
+                        Submit
+                    </button>
+                    <button class="closeButton">Close</button>
+                </div>
+
+                
             </div>
         <form>
-        <button class="closeButton">Close</button>
-        <p>This modal dialog has a groovy backdrop!</p>
-        
     </dialog>
     
 </body>

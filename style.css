@@ -7,9 +7,14 @@
     
 }
 
+@font-face {
+    font-family: skyrim;
+    src: url(assets/Balgruf-JRye7.ttf);
+}
+
 body,html{
     height: 100%;
-    background-color: #909f86;
+    background-color: #b2beb5;
    
 }
 
@@ -23,8 +28,20 @@ body,html{
 }
 
 .header{
-    background-color: #909f86;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     grid-area: 1 / 1 / 2 / 2;
+    box-shadow: 2px 2px 2px 2px;
+}
+
+.headerText{
+    font-family: skyrim;
+    font-size: 32px;
+    color: white;
+    
+    
 }
 
 .footer{
@@ -33,7 +50,7 @@ body,html{
     justify-content: center;
     align-items: center;
     grid-area: 3 / 1 / 4 / 2;
-    background-color: #909f86;
+    background-color: #b2beb5;
 }
 
 .showOutput{
@@ -76,6 +93,41 @@ dialog {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+  }
+
+  .showModal{
+    background-color: black;
+    height: 50px;
+    width: 150px;
+    border-radius: 50%;
+    font-family: skyrim;
+    font-size: 16px;
+    color: white;
+  }
+
+  .titleAndAuthor,.pagesAndRead{
+      display: flex;
+      flex-direction: column;
+      padding: 10px;
+      gap: 10px;
+  }
+
+  .modalButtons{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+      
+      
+  }
+
+  .inputButton,.closeButton{
+    border-radius: 50%;
+    color: white;
+    background-color: black;
+    padding: 5px;
+    font-family: skyrim;
+    
   }
 
   
